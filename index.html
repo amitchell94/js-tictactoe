@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
+<h1 style="text-align: center; padding-bottom: 2rem">Tic-Tac-Toe</h1>
 
-
-<table class="center">
-    <tr>
-        <td>
-            <button type="button" class="cell" id="cell00"></button>
-        </td>
-        <td>
-            <button type="button" class="cell" id="cell01"></button>
-        </td>
-        <td>
-            <button type="button" class="cell" id="cell02"></button>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <button type="button" class="cell" id="cell10"></button>
-        </td>
-        <td>
-            <button type="button" class="cell" id="cell11"></button>
-        </td>
-        <td>
-            <button type="button" class="cell" id="cell12"></button>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <button type="button" class="cell" id="cell20"></button>
-        </td>
-        <td>
-            <button type="button" class="cell" id="cell21"></button>
-        </td>
-        <td>
-            <button type="button" class="cell" id="cell22"></button>
-        </td>
-    </tr>
-</table>
+<div id="gameBoard">
+    <table class="center">
+        <tr>
+            <td>
+                <button type="button" class="cell" id="cell00"></button>
+            </td>
+            <td>
+                <button type="button" class="cell" id="cell01"></button>
+            </td>
+            <td>
+                <button type="button" class="cell" id="cell02"></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" class="cell" id="cell10"></button>
+            </td>
+            <td>
+                <button type="button" class="cell" id="cell11"></button>
+            </td>
+            <td>
+                <button type="button" class="cell" id="cell12"></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" class="cell" id="cell20"></button>
+            </td>
+            <td>
+                <button type="button" class="cell" id="cell21"></button>
+            </td>
+            <td>
+                <button type="button" class="cell" id="cell22"></button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="gameOver" class="hidden" style="text-align: center; padding-top: 2rem"">
+    <h1 id="winningText">Player X Wins</h1>
+    <button id="playAgain" class="gameButton">Play again</button>
+</div>
+<script src="js/script.js"></script>
 </body>
+</html>
