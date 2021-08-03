@@ -34,10 +34,13 @@ function playSquare (cell) {
             cell.textContent = "X"
             cell.style.color = "crimson"
             isTurnPlayerOne = false;
+
             if (checkWinner("X")) {
                 gameOver("X")
             } else if (checkDraw()) {
                 gameOver("-")
+            } else {
+                winningText.textContent = "Player O to play"
             }
         } else {
             cell.textContent = "O"
@@ -48,17 +51,19 @@ function playSquare (cell) {
                 gameOver("O")
             } else if (checkDraw()) {
                 gameOver("-")
+            }else {
+                winningText.textContent = "Player X to play"
             }
         }
         cell.classList.add("cannotuse")
-
     }
 
 }
 
 function checkWinner (player){
-    let winsHorizontally = false;
+    let winningColor = "LightGreen"
 
+    let winsHorizontally = false;
     //Check horizontal wins
     for (let i = 0; i < cell2dArray.length; i++) {
         winsHorizontally = true;
@@ -66,6 +71,10 @@ function checkWinner (player){
             winsHorizontally = winsHorizontally && cell2dArray[i][j].textContent == player;
         }
         if (winsHorizontally) {
+            for (let j = 0; j < cell2dArray[i].length; j++) {
+                cell2dArray[i][j].style.backgroundColor = winningColor;
+            }
+            console.log("got here")
             return true;
         }
     }
@@ -78,16 +87,23 @@ function checkWinner (player){
             winsVertically = winsVertically && cell2dArray[j][i].textContent == player;
         }
         if (winsVertically) {
+            for (let j = 0; j < cell2dArray[i].length; j++) {
+                cell2dArray[j][i].style.backgroundColor = winningColor;
+            }
             return true;
         }
     }
 
-    let winsDiagonally = false;
+    let winsDiagonally = true;
     //Check diagonal wins
     for (let i = 0; i < cell2dArray.length; i++) {
         winsDiagonally = winsDiagonally && cell2dArray[i][i].textContent == player;
+        console.log(winsDiagonally)
     }
     if (winsDiagonally) {
+        for (let i = 0; i < cell2dArray.length; i++) {
+            cell2dArray[i][i].style.backgroundColor = winningColor;
+        }
         return true;
     }
 
@@ -102,6 +118,13 @@ function checkWinner (player){
         indexRow++;
     }
     if (winsDiagonallyLeft) {
+        indexColumn = cell2dArray.length - 1;
+        indexRow = 0;
+        while (indexColumn >= 0) {
+            cell2dArray[indexRow][indexColumn].style.backgroundColor = winningColor;
+            indexColumn--;
+            indexRow++;
+        }
         return true;
     }
 
@@ -134,9 +157,10 @@ function gameOver (winningPlayer) {
 function newGame() {
     cellArray.forEach(cell => {
         cell.classList.remove("cannotuse");
-        cell.textContent = ""
+        cell.style.backgroundColor = null;
+        cell.textContent = "";
     } )
-    gameOverDiv.classList.add("hidden")
     isTurnPlayerOne = true;
+    winningText.textContent = "Player X to start"
     stopPlay = false;
 }
