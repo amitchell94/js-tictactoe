@@ -1,4 +1,4 @@
-# js-tictactoe
+# JavaScript Tic-Tac-Toe Project
 
 A simple implementation of the game Tic-Tac-Toe in JavaScript.
 
